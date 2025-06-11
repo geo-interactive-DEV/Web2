@@ -75,10 +75,13 @@
           const welcomeEl = document.getElementById("welcomeUser");
           welcomeEl.textContent = data.username;
           welcomeEl.onclick = () => {
-            window.location.href = `${data.username}/profile`;
+            window.location.href = `/login`;
           };
         } else {
           throw new Error(data.message || "Failed to fetch profile");
+          {
+          alert("Login failed: " + data.message);
+        }
         }
       } catch (e) {
         console.error(e);
