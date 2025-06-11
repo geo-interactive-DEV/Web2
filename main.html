@@ -67,21 +67,23 @@
       }
 
       try {
-        const res = await fetch("https://server-1eby.onrender.com", {
+        // Fix: fetch the /profile endpoint, not the base URL
+        const res = await fetch("https://server-1eby.onrender.com/profile", {
           headers: { Authorization: `Bearer ${token}` },
         });
+
+        if (!res.ok) throw new Error("Failed to fetch profile");
+
         const data = await res.json();
+
         if (data.success) {
           const welcomeEl = document.getElementById("welcomeUser");
           welcomeEl.textContent = data.username;
           welcomeEl.onclick = () => {
-            window.location.href = `/login`;
+            window.location.href = "login.html"; // maybe link to profile page later
           };
         } else {
           throw new Error(data.message || "Failed to fetch profile");
-          {
-          alert("Login failed: " + data.message);
-        }
         }
       } catch (e) {
         console.error(e);
