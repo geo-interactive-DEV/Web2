@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tester Application Form - Geo Interactive Portal</title>
+  <style>
+    body {
+      background: #121212;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 50px;
+      margin: 0;
+      min-height: 100vh;
+      position: relative;
+    }
+    h1, h2 {
+      color: #ff9800;
+      margin-bottom: 10px;
+    }
+    form {
+      background: #1f1f1f;
+      border: 2px solid #ff9800;
+      border-radius: 10px;
+      padding: 20px;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+    label {
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+    input, select {
+      background: #121212;
+      border: 2px solid #ff9800;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1.1em;
+      color: white;
+      outline: none;
+      user-select: text;
+      transition: background 0.2s, color 0.2s;
+    }
+    input::placeholder, select option {
+      color: #bbb;
+    }
+    input:focus, select:focus {
+      background: #ff9800;
+      color: black;
+      border-color: #ffa726;
+    }
+    button {
+      background: #1f1f1f;
+      border: 2px solid #ff9800;
+      color: white;
+      padding: 20px;
+      margin: 20px 0 0 0;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    button:hover {
+      background: #ff9800;
+      color: black;
+    }
+    a {
+      color: #ff9800;
+      margin-top: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      user-select: none;
+      font-size: 1.1em;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h2>Apply to be a Tester</h2>
+  <form action="https://formspree.io/f/xdkzgeay" method="POST">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="_replyto" placeholder="Your email" required />
+
+    <label for="stage">Select Testing Stage</label>
+    <select id="stage" name="stage" required>
+      <option value="" disabled selected>Choose a stage</option>
+      <option value="Pre-Alpha">Pre-Alpha</option>
+      <option value="Alpha">Alpha</option>
+      <option value="Beta">Beta</option>
+    </select>
+
+    <button type="submit">Apply Now</button>
+  </form>
+
+  <a href="main.html">← Back to Main</a>
+</body>
+</html>
