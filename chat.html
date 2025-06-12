@@ -135,7 +135,7 @@
         const data = await res.json();
         if (!data.success) throw new Error(data.message || "Failed to load messages");
 
-        chatBox.innerHTML = ""; // clear current
+        chatBox.innerHTML = ""; // clear current messages
         data.messages.forEach(addMessage);
       } catch (err) {
         alert("Error loading chat messages: " + err.message);
@@ -169,7 +169,7 @@
     // Load messages on page load
     loadMessages();
 
-    // Optional: poll for new messages every 5 seconds
+    // Poll for new messages every 5 seconds
     setInterval(loadMessages, 5000);
   </script>
 </body>
