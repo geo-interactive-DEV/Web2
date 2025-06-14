@@ -54,11 +54,11 @@
   <h1>Welcome to the Geo Interactive Portal</h1>
   <div id="welcomeUser" title="Go to your profile"></div>
 
-  <div class="app-button" onclick="location.href='chat.html'">Chat</div>
-  <div class="app-button" onclick="location.href='anonymous.html'">Anonymous Chat</div>
-  <div class="app-button" onclick="location.href='geo.html'">Geo Interactive</div>
-  <div class="app-button" onclick="location.href='applicationcenter.html'">Our Partners.</div>
-  <div class="app-button" onclick="location.href='applicationcenter.html'">Application center</div>
+  <div class="app-button" onclick="location.href='chat'">Chat</div>
+  <div class="app-button" onclick="location.href='anonymous'">Anonymous Chat</div>
+  <div class="app-button" onclick="location.href='geo'">Geo Interactive</div>
+  <div class="app-button" onclick="location.href='partners'">Our Partners.</div>
+  <div class="app-button" onclick="location.href='applicationcenter'">Application center</div>
 
   <script>
     async function fetchProfile() {
@@ -91,7 +91,7 @@
         console.error(e);
         localStorage.removeItem("token");
         localStorage.removeItem("username");
-        window.location.href = "login.html";
+        window.location.href = "login";
       }
     }
     fetchProfile();
