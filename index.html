@@ -53,6 +53,26 @@
       line-height: 1.5;
       color: #ccc;
     }
+    .footer {
+      background: #1f1f1f;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .footer button {
+      background-color: #ff9800;
+      color: #121212;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .footer button:hover {
+      background-color: #e68900;
+    }
   </style>
 </head>
 <body>
@@ -64,6 +84,10 @@
     <p>
       We’re a game development group that puts community first. Join us to experience early access, collaborate on projects, and enjoy exclusive content. Your adventure begins here!
     </p>
+  </div>
+  <div class="footer">
+    <button onclick="location.href='privacy.html'">Privacy Policy</button>
+    <button onclick="location.href='tos.html'">Terms of Service</button>
   </div>
 </body>
 </html>

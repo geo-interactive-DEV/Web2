@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Main Menu - Geo Interactive Application center</title>
+  <title>Main Menu - Geo Interactive Application Center</title>
   <style>
     body {
       background: #121212;
@@ -11,14 +11,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 50px;
+      padding: 50px 20px;
       margin: 0;
       min-height: 100vh;
       position: relative;
     }
     h1 {
       color: #ff9800;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
     #welcomeUser {
       position: absolute;
@@ -30,32 +30,103 @@
       cursor: pointer;
       user-select: none;
     }
-    .app-button {
+    .positions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .position-card {
       background: #1f1f1f;
       border: 2px solid #ff9800;
-      color: white;
-      padding: 20px;
-      margin: 20px;
-      font-size: 1.2em;
       border-radius: 10px;
-      cursor: pointer;
-      width: 250px;
-      text-align: center;
-      transition: background 0.2s;
-      user-select: none;
+      padding: 20px;
+      text-align: left;
+      transition: background 0.3s;
+      position: relative;
     }
-    .app-button:hover {
+    .position-card:hover {
+      background: #2c2c2c;
+    }
+    .position-title {
+      color: #ff9800;
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+    .position-detail {
+      margin: 5px 0;
+    }
+    .apply-btn {
+      margin-top: 10px;
+      padding: 10px;
       background: #ff9800;
-      color: black;
+      border: none;
+      color: #121212;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
+    .apply-btn:hover {
+      background: #e68900;
+    }
+    .closed {
+      background: #333;
+      color: #888;
+      cursor: not-allowed;
+    }
+    .status-label {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #e53935;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to the Geo Interactive Application center</h1>
+  <h1>Welcome to the Geo Interactive Application Center</h1>
   <div id="welcomeUser" title="Go to your profile"></div>
 
-  <div class="app-button" onclick="location.href='Tester.html'">Tester's</div>
-        
+  <div class="positions-grid">
+
+    <!-- Tester - Open -->
+    <div class="position-card" data-open="true">
+      <div class="position-title">Tester</div>
+      <div class="position-detail"><strong>Min Age:</strong> 13+</div>
+      <div class="position-detail"><strong>Knowledge:</strong> Basic game feedback</div>
+      <div class="position-detail"><strong>Description:</strong> Help us find bugs and give feedback on new games.</div>
+      <button class="apply-btn" onclick="location.href='Tester.html'">Apply</button>
+    </div>
+
+    <!-- Developer - Closed -->
+    <div class="position-card" data-open="false">
+      <div class="position-title">Developer</div>
+      <div class="position-detail"><strong>Min Age:</strong> 15+</div>
+      <div class="position-detail"><strong>Knowledge:</strong> Roblox Lua, Studio experience</div>
+      <div class="position-detail"><strong>Description:</strong> Script and build new features for our games.</div>
+      <button class="apply-btn closed" disabled>Applications Closed</button>
+    </div>
+
+    <!-- Moderator - Open -->
+    <div class="position-card" data-open="false">
+      <div class="position-title">Moderator</div>
+      <div class="position-detail"><strong>Min Age:</strong> 16+</div>
+      <div class="position-detail"><strong>Knowledge:</strong> Good behavior, community rules</div>
+      <div class="position-detail"><strong>Description:</strong> Keep our community safe and respectful.</div>
+      <button class="apply-btn">Apply</button>
+    </div>
+
+    <!-- Designer - Closed -->
+    <div class="position-card" data-open="false">
+      <div class="position-title">Designer</div>
+      <div class="position-detail"><strong>Min Age:</strong> 14+</div>
+      <div class="position-detail"><strong>Knowledge:</strong> UI/UX, clothing or asset design</div>
+      <div class="position-detail"><strong>Description:</strong> Create UI, logos, and clothing for games.</div>
+      <button class="apply-btn closed" disabled>Applications Closed</button>
+    </div>
+
+  </div>
 
   <script>
     async function fetchProfile() {
@@ -66,7 +137,6 @@
       }
 
       try {
-        // Fix: fetch the /profile endpoint, not the base URL
         const res = await fetch("https://server-1eby.onrender.com/profile", {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -79,7 +149,7 @@
           const welcomeEl = document.getElementById("welcomeUser");
           welcomeEl.textContent = data.username;
           welcomeEl.onclick = () => {
-            window.location.href = "login.html"; // maybe link to profile page later
+            window.location.href = "login.html";
           };
         } else {
           throw new Error(data.message || "Failed to fetch profile");
@@ -91,6 +161,7 @@
         window.location.href = "login.html";
       }
     }
+
     fetchProfile();
   </script>
 </body>
