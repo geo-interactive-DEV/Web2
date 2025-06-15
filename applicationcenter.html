@@ -2,133 +2,191 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Main Menu - Geo Interactive Application Center</title>
+  <title>Geo Interactive Application Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       background: #121212;
       color: white;
-      font-family: sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 50px 20px;
-      margin: 0;
       min-height: 100vh;
-      position: relative;
     }
+
     h1 {
       color: #ff9800;
-      margin-bottom: 20px;
+      margin: 40px 0 20px;
+      text-align: center;
+      font-size: 2.5em;
     }
+
     #welcomeUser {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      font-size: 1.2em;
+      top: 15px;
+      left: 20px;
+      font-size: 1em;
       color: #ffa726;
       font-weight: 600;
       cursor: pointer;
       user-select: none;
     }
+
     .positions-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      width: 100%;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      width: 90%;
       max-width: 1200px;
+      padding: 30px 0;
     }
+
     .position-card {
       background: #1f1f1f;
       border: 2px solid #ff9800;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 20px;
-      text-align: left;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.2s;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
+
     .position-card:hover {
-      background: #2c2c2c;
+      background: #272727;
+      transform: translateY(-2px);
     }
+
     .position-title {
       color: #ff9800;
-      font-size: 1.4em;
+      font-size: 1.5em;
       margin-bottom: 10px;
     }
+
     .position-detail {
-      margin: 5px 0;
+      margin: 6px 0;
+      color: #ccc;
     }
+
     .apply-btn {
-      margin-top: 10px;
+      margin-top: 15px;
       padding: 10px;
       background: #ff9800;
-      border: none;
       color: #121212;
       font-weight: bold;
-      border-radius: 5px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
-      width: 100%;
-      transition: background 0.2s;
+      font-size: 1em;
+      transition: background 0.2s ease;
     }
+
     .apply-btn:hover {
       background: #e68900;
     }
-    .closed {
-      background: #333;
-      color: #888;
+
+    .apply-btn.closed {
+      background: #2c2c2c;
+      color: #777;
       cursor: not-allowed;
+      pointer-events: none;
     }
-    .status-label {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #e53935;
+
+    .tooltip {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: #2c2c2c;
+      color: #aaa;
+      font-size: 0.75em;
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: none;
+    }
+
+    .position-card[data-open="false"]:hover .tooltip {
+      display: block;
     }
   </style>
 </head>
 <body>
+
   <h1>Welcome to the Geo Interactive Application Center</h1>
-  <div id="welcomeUser" title="Go to your profile"></div>
+  <div id="welcomeUser" title="View your profile">Loading...</div>
 
-  <div class="positions-grid">
-
-    <!-- Tester - Open -->
-    <div class="position-card" data-open="true">
-      <div class="position-title">Tester</div>
-      <div class="position-detail"><strong>Min Age:</strong> 13+</div>
-      <div class="position-detail"><strong>Knowledge:</strong> Basic game feedback</div>
-      <div class="position-detail"><strong>Description:</strong> Help us find bugs and give feedback on new games.</div>
-      <button class="apply-btn" onclick="location.href='Tester.html'">Apply</button>
-    </div>
-
-    <!-- Developer - Closed -->
-    <div class="position-card" data-open="false">
-      <div class="position-title">Developer</div>
-      <div class="position-detail"><strong>Min Age:</strong> 15+</div>
-      <div class="position-detail"><strong>Knowledge:</strong> Roblox Lua, Studio experience</div>
-      <div class="position-detail"><strong>Description:</strong> Script and build new features for our games.</div>
-      <button class="apply-btn closed" disabled>Applications Closed</button>
-    </div>
-
-    <!-- Moderator - Open -->
-    <div class="position-card" data-open="false">
-      <div class="position-title">Moderator</div>
-      <div class="position-detail"><strong>Min Age:</strong> 16+</div>
-      <div class="position-detail"><strong>Knowledge:</strong> Good behavior, community rules</div>
-      <div class="position-detail"><strong>Description:</strong> Keep our community safe and respectful.</div>
-      <button class="apply-btn">Apply</button>
-    </div>
-
-    <!-- Designer - Closed -->
-    <div class="position-card" data-open="false">
-      <div class="position-title">Designer</div>
-      <div class="position-detail"><strong>Min Age:</strong> 14+</div>
-      <div class="position-detail"><strong>Knowledge:</strong> UI/UX, clothing or asset design</div>
-      <div class="position-detail"><strong>Description:</strong> Create UI, logos, and clothing for games.</div>
-      <button class="apply-btn closed" disabled>Applications Closed</button>
-    </div>
-
+  <div class="positions-grid" id="positionsContainer">
+    <!-- Cards inserted here dynamically -->
   </div>
 
   <script>
+    const positions = [
+      {
+        title: "Tester",
+        minAge: "13+",
+        knowledge: "Basic game feedback",
+        description: "Help us find bugs and give feedback on new games.",
+        link: "Tester.html",
+        open: true
+      },
+      {
+        title: "Developer",
+        minAge: "15+",
+        knowledge: "Roblox Lua, Studio experience",
+        description: "Script and build new features for our games.",
+        link: "Developer.html",
+        open: false
+      },
+      {
+        title: "Moderator",
+        minAge: "16+",
+        knowledge: "Good behavior, community rules",
+        description: "Keep our community safe and respectful.",
+        link: "Moderator.html",
+        open: false
+      },
+      {
+        title: "Designer",
+        minAge: "14+",
+        knowledge: "UI/UX, clothing or asset design",
+        description: "Create UI, logos, and clothing for games.",
+        link: "Designer.html",
+        open: false
+      }
+    ];
+
+    const container = document.getElementById("positionsContainer");
+
+    positions.forEach(pos => {
+      const card = document.createElement("div");
+      card.className = "position-card";
+      card.setAttribute("data-open", pos.open);
+
+      card.innerHTML = `
+        <div class="position-title">${pos.title}</div>
+        <div class="position-detail"><strong>Min Age:</strong> ${pos.minAge}</div>
+        <div class="position-detail"><strong>Knowledge:</strong> ${pos.knowledge}</div>
+        <div class="position-detail"><strong>Description:</strong> ${pos.description}</div>
+        <button class="apply-btn ${pos.open ? '' : 'closed'}">
+          ${pos.open ? 'Apply' : 'Applications Closed'}
+        </button>
+        ${!pos.open ? `<div class="tooltip">This position is not accepting applications</div>` : ''}
+      `;
+
+      const btn = card.querySelector("button");
+      if (pos.open) {
+        btn.addEventListener("click", () => {
+          location.href = pos.link;
+        });
+      }
+
+      container.appendChild(card);
+    });
+
+    // Fetch profile and display username
     async function fetchProfile() {
       const token = localStorage.getItem("token");
       if (!token) {
@@ -141,28 +199,25 @@
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        if (!res.ok) throw new Error("Failed to fetch profile");
-
         const data = await res.json();
+        const welcomeEl = document.getElementById("welcomeUser");
 
         if (data.success) {
-          const welcomeEl = document.getElementById("welcomeUser");
           welcomeEl.textContent = data.username;
           welcomeEl.onclick = () => {
             window.location.href = "login.html";
           };
         } else {
-          throw new Error(data.message || "Failed to fetch profile");
+          throw new Error();
         }
-      } catch (e) {
-        console.error(e);
+      } catch {
         localStorage.removeItem("token");
-        localStorage.removeItem("username");
-        window.location.href = "login.html";
+        location.href = "login.html";
       }
     }
 
     fetchProfile();
   </script>
+
 </body>
 </html>
