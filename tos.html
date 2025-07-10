@@ -1,136 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Tester Application Form - Geo Interactive Portal</title>
+  <meta charset="UTF-8">
+  <title>Geo Interactive – Terms of Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       background: #121212;
       color: white;
-      font-family: sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 50px 20px 80px;
-      margin: 0;
       min-height: 100vh;
-      position: relative;
     }
-    h1, h2 {
+
+    h1 {
       color: #ff9800;
-      margin-bottom: 10px;
-      user-select: none;
-    }
-    p.intro {
-      max-width: 400px;
+      margin: 40px 0 20px;
       text-align: center;
-      margin-bottom: 40px;
-      color: #ccc;
-      font-size: 1.1em;
-      user-select: none;
+      font-size: 2.5em;
     }
-    form {
-      background: #1f1f1f;
-      border: 2px solid #ff9800;
-      border-radius: 10px;
-      padding: 30px 25px;
-      width: 360px;
-      display: flex;
-      flex-direction: column;
-      user-select: none;
-      box-shadow: 0 0 15px #ff9800aa;
-      transition: box-shadow 0.3s ease;
-    }
-    form:hover {
-      box-shadow: 0 0 25px #ff9800dd;
-    }
-    label {
-      margin-top: 20px;
-      margin-bottom: 6px;
+
+    #welcomeUser {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 1em;
+      color: #ffa726;
       font-weight: 600;
-    }
-    input, select {
-      background: #121212;
-      border: 2px solid #ff9800;
-      border-radius: 10px;
-      padding: 14px 16px;
-      font-size: 1.1em;
-      color: white;
-      outline: none;
-      user-select: text;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    input::placeholder {
-      color: #bbb;
-    }
-    select option {
-      color: black;
-    }
-    input:focus, select:focus {
-      background: #ff9800;
-      color: black;
-      border-color: #ffa726;
-    }
-    button {
-      background: #1f1f1f;
-      border: 2px solid #ff9800;
-      color: white;
-      padding: 20px;
-      margin-top: 30px;
-      font-size: 1.3em;
-      font-weight: 700;
-      border-radius: 10px;
       cursor: pointer;
       user-select: none;
-      transition: background 0.2s, color 0.2s;
-      box-shadow: 0 0 10px #ff9800aa;
     }
-    button:hover {
-      background: #ff9800;
-      color: black;
-      box-shadow: 0 0 20px #ffa726cc;
+
+    .tos-container {
+      max-width: 1000px;
+      width: 90%;
+      background: #1f1f1f;
+      border: 2px solid #ff9800;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
     }
-    a {
+
+    .tos-section {
+      margin-bottom: 30px;
+    }
+
+    .tos-section h2 {
       color: #ff9800;
-      margin-top: 50px;
-      font-weight: 600;
-      text-decoration: none;
-      user-select: none;
-      font-size: 1.1em;
-      transition: color 0.3s ease;
+      font-size: 1.5em;
+      margin-bottom: 10px;
     }
-    a:hover {
-      color: #e68900;
+
+    .tos-section p,
+    .tos-section li {
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    a {
+      color: #ffa726;
       text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .tos-container {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Tester Application Form</h1>
-  <p class="intro">
-    Interested in shaping the future of Geo Interactive?  
-    Apply now to join our tester team and get exclusive access to early stages of development.  
-    Help us make quality experiences you'll love!
-  </p>
 
-  <form action="https://formspree.io/f/xdkzgeay" method="POST">
-    <label for="name">User</label>
-    <input type="text" id="name" name="name" placeholder="Your username" required />
+  <div id="welcomeUser">Welcome to Geo Interactive</div>
 
-    <label for="contact">Contact Info (Discord or Email)</label>
-     <input type="text" id="User" name="name" placeholder="Your username" required />
+  <h1>Terms of Service</h1>
 
-    <label for="stage">Select Testing Stage</label>
-    <select id="stage" name="stage" required>
-      <option value="" disabled selected>Choose a stage</option>
-      <option value="Pre-Alpha">Pre-Alpha</option>
-      <option value="Alpha">Alpha</option>
-      <option value="Beta">Beta</option>
-    </select>
+  <div class="tos-container">
 
-    <button type="submit">Apply Now</button>
-  </form>
+    <div class="tos-section">
+      <p><strong>Last Updated:</strong> July 10, 2025</p>
+      <p>Welcome to Geo Interactive! These Terms of Service (“Terms”) are the rules for using anything created or managed by Geo Interactive, including our websites, games, apps, Discord servers, and other community platforms (“Services”).</p>
+      <p>Geo Interactive is a group of developers and creators, not a registered company. By using our Services, you agree to follow these Terms. If you don’t agree, you must not use our Services.</p>
+    </div>
 
-  <a href="portal">← Back to Main</a>
+    <div class="tos-section">
+      <h2>1. Who We Are</h2>
+      <p>Geo Interactive is a collaborative, creative group. We make games, websites, events, and online experiences for the community. While we may accept donations or offer digital content, we’re not a formal company, and nothing here forms a business contract.</p>
+    </div>
+
+    <div class="tos-section">
+      <h2>2. Age and Access</h2>
+      <p>You must be at least 13 years old to use our Services.</p>
+      <p>If you’re under 13, you're not allowed to join or access our content.</p>
+      <p>We may ask for your date of birth to verify your age.</p>
+      <p>If we discover you are underage, we may ban your account or delete your data.</p>
+      <p>Some platforms (like Discord or Roblox) have their own age rules — you must follow those too.</p>
+    </div>
+
+    <div class="tos-section">
+      <h2>3. Your Account and Safety</h2>
+      <p>Some parts of our Services (e.g. games or Discord) may require you to create an account or profile.</p>
+      <p>By doing so, you agree to:</p>
+      <ul>
+        <li>Use real, honest information (no fake names or pretending to be someone else).</li>
+        <li>Keep your login secure.</li>
+        <li>Not share your account unless allowed (some platforms prohibit this).</li>
+        <li>Take responsibility for any actions made under your account.</li>
+      </ul>
+      <p>If someone uses your account to break the rules, you are still responsible unless proven otherwise.</p>
+    </div>
+
+    <div class="tos-section">
+      <h2>4. Community Rules (What You Can and Can’t Do)</h2>
+      <p>We want Geo Interactive to be a safe, fun space for everyone. By using our Services, you agree not to:</p>
+      <ul>
+        <li>Break the law or platform rules (e.g., Roblox ToS, Discord ToS).</li>
+        <li>Harass, bully, threaten, or insult others.</li>
+        <li>Use slurs, hate speech, NSFW content, or anything unsafe for kids/teens.</li>
+        <li>Spam or flood chats, comments, or servers.</li>
+        <li>Share cheats, exploits, viruses, or anything harmful.</li>
+        <li>Attempt to hack or reverse-engineer our games or platforms.</li>
+        <li>Pretend to be a staff member or admin if you are not.</li>
+        <li>Use bots or scripts to gain unfair advantages.</li>
+      </ul>
+      <p>We reserve the right to warn, kick, mute, ban, or permanently remove any user from our Services for any behavior that we believe breaks these rules or harms the community.</p>
+    </div>
+
+    <div class="tos-section">
+      <h2>5. Moderation and Staff</h2>
+      <p>Our moderators and team members are here to help protect users and make things fun. Staff decisions are final, but you can:</p>
+      <ul>
+        <li>Appeal bans or reports respectfully.</li>
+        <li>Ask for clarification if something’s unclear.</li>
+        <li>Report abuse, bugs, or rule-breaking via the proper channels.</li>
+      </ul>
+      <p>Abusing the report system or lying in an appeal may result in a longer ban.</p>
+    </div>
+
+    <div class="tos-section">
+      <h2>6. Digital Items, Donations, and Purchases</h2>
+      <p>Some of our games or platforms may offer virtual items, cosmetics, passes, or donation-based perks.</p>
+      <ul>
+        <li>These are not real money and have no cash value.</li>
+        <li>We are not required to refund items or donations unless legally obligated.</li>
+        <li>Items may change, be removed, or stop working if we update or shut down the game.</li>
+        <li>Donations support the project and don’t give ownership or power over it.</li>
+        <li>If we believe someone is abusing purchases (e.g. chargebacks), we may ban or restrict access.</li>
+      </ul>
+    </div>
+
+    <div class="tos-section">
+      <h2>7. User-Generated Content</h2>
+      <p>You may create or submit content (e.g., names, characters, ideas, artwork) while using our Services. When you do, you agree that:</p>
+      <ul>
+        <li>You made it yourself or have permission to share it.</li>
+        <li>You give us permission to use, show, or modify it in our projects.</li>
+        <li>You do not get paid or credited unless we choose to do so.</li>
+        <li>You do not own the project or gain any legal rights over our group, platforms, or content.</li>
+        <li>We may remove or reject content at any time for any reason.</li>
+      </ul>
+    </div>
+
+    <div class="tos-section">
+      <h2>8. Our Content and Rights</h2>
+      <p>All our games, art, sounds, characters, logos, and systems are the property of Geo Interactive and its creators.</p>
+      <p>You may not:</p>
+      <ul>
+        <li>Copy, steal, or reupload our games, content, or code.</li>
+        <li>Pretend our work is yours.</li>
+        <li>Sell or redistribute our content without clear written permission.</li>
+      </ul>
+      <p>You may:</p>
+      <ul>
+        <li>Stream or record gameplay (with credit).</li>
+        <li>Make fan content, videos, or memes (as long as it's respectful).</li>
+        <li>Share links to our games or servers.</li>
+      </ul>
+      <p>If you're unsure, just ask us via our contact info.</p>
+    </div>
+
+    <div class="tos-section">
+      <h2>9. Bugs, Downtime, and Changes</h2>
+      <p>Our Services are always being updated and improved. Sometimes things may break, be removed, or change unexpectedly.</p>
+      <ul>
+        <li>We do not guarantee that everything will work all the time.</li>
+        <li>We do not guarantee that progress, items, or accounts won’t be lost.</li>
+        <li>We do not guarantee continued support for a feature, game, or server.</li>
+      </ul>
+      <p>We appreciate bug reports and feedback, but we’re not responsible for any loss caused by errors, crashes, or shutdowns.</p>
+    </div>
+
+    <div class="tos-section">
+      <h2>10. Privacy</h2>
+      <p>We respect your privacy and follow basic data protection principles. Our Privacy Policy explains:</p>
+      <ul>
+        <li>What data we collect (e.g., usernames, age verification, usage info);</li>
+        <li>Why we collect it (e.g., safety, communication);</li>
+        <li>How long we keep it;</li>
+        <li>Your rights to request deletion or access.</li>
+      </ul>
+      <p>We don’t sell your data. Ever.</p>
+    </div>
+
+    <div class="tos-section">
+      <h2>11. Leaving Geo Interactive</h2>
+      <p>You may leave our group, games, or servers at any time. If you do:</p>
+      <ul>
+        <li>We may delete your data, if you request it.</li>
+        <li>You may lose progress, items, or rewards.</li>
+        <li>You won’t be entitled to refunds unless legally required.</li>
+        <li>We may also remove users for breaking rules or to protect the community.</li>
+      </ul>
+    </div>
+
+    <div class="tos-section">
+      <h2>12. Changes to These Terms</h2>
+      <p>We may update these Terms as we grow or adjust our services. When we do:</p>
+      <ul>
+        <li>We’ll change the "Last Updated" date at the top.</li>
+        <li>We’ll post changes on our website or Discord.</li>
+        <li>Your continued use of the Services means you accept the new version.</li>
+      </ul>
+    </div>
+
+    <div class="tos-section">
+      <h2>13. Contact Us</h2>
+      <p>Email: <a href="mailto:contact@geointeractive.online">contact@geointeractive.online</a></p>
+      <p>Website: <a href="https://geointeractive.online" target="_blank">https://geointeractive.online</a></p>
+      <p>Discord: Geo Interactive Discord</p>
+    </div>
+
+  </div>
+
 </body>
 </html>
