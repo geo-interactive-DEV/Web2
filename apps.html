@@ -5,23 +5,51 @@
   <title>Geo Interactive - Apps</title>
   <style>
     body {
+      margin: 0;
       background: #121212;
       color: white;
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 180px;
+      background: #1e1e1e;
       padding: 20px;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
 
-    h1 {
-      margin-bottom: 10px;
-      font-size: 28px;
-    }
-
-    a.back-link {
-      color: #ff9800;
-      text-decoration: none;
-      display: inline-block;
+    .sidebar h2 {
+      font-size: 20px;
       margin-bottom: 20px;
+    }
+
+    .tab-button {
+      background: #2a2a2a;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .tab-button:hover,
+    .tab-button.active {
+      background: #ff9800;
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
     }
 
     .apps-container {
@@ -36,12 +64,11 @@
       padding: 15px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s;
     }
 
     .app-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
     }
 
     .app-icon {
@@ -86,29 +113,80 @@
       color: #ccc;
       cursor: not-allowed;
     }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Geo Interactive - Apps</h1>
-  <a href="main.html" class="back-link">← Back to Main</a>
-
-  <div class="apps-container">
-
-    <!-- App 1 - GitHub Direct Download -->
-    <div class="app-card">
-      <div class="app-icon">Icon Here</div>
-      <div class="app-title">App Test</div>
-      <a href="https://github.com/geo-interactive-DEV/Web2/raw/main/apptest.py" class="action-button download-btn" download>Download</a>
-    </div>
-
-    <!-- App 2 - Coming Soon -->
-    <div class="app-card">
-      <div class="app-icon">Icon Here</div>
-      <div class="app-title">Hearthville</div>
-      <span class="action-button coming-soon-btn">Coming Soon</span>
-    </div>
-
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Categories</h2>
+    <button class="tab-button active" onclick="showCategory('roblox')">🟡 Roblox</button>
+    <button class="tab-button" onclick="showCategory('pc')">🖥️ PC</button>
+    <button class="tab-button" onclick="showCategory('other')">🧩 Other</button>
+    <a href="main.html" style="color:#ff9800; margin-top: auto;">← Back to Main</a>
   </div>
+
+  <!-- Main App Grid -->
+  <div class="main-content">
+    <h1>Geo Interactive - Apps</h1>
+
+    <div class="apps-container">
+
+      <!-- Roblox App -->
+      <div class="app-card category-roblox">
+        <div class="app-icon">Icon Here</div>
+        <div class="app-title">UKRP (Roblox)</div>
+        <span class="action-button coming-soon-btn">Coming Soon</span>
+      </div>
+
+      <!-- PC App -->
+      <div class="app-card category-pc">
+        <div class="app-icon">Icon Here</div>
+        <div class="app-title">App Test</div>
+        <a href="https://github.com/geo-interactive-DEV/Web2/raw/main/apptest.py" class="action-button download-btn" download>Download</a>
+      </div>
+
+      <!-- PC App -->
+      <div class="app-card category-pc">
+        <div class="app-icon">Icon Here</div>
+        <div class="app-title">Shape Shifter</div>
+        <span class="action-button coming-soon-btn">Coming Soon</span>
+      </div>
+
+      <!-- Other App -->
+      <div class="app-card category-other">
+        <div class="app-icon">Icon Here</div>
+        <div class="app-title">Language Tool</div>
+        <span class="action-button coming-soon-btn">Coming Soon</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function showCategory(category) {
+      const allCards = document.querySelectorAll(".app-card");
+      const allButtons = document.querySelectorAll(".tab-button");
+
+      allCards.forEach(card => {
+        if (card.classList.contains("category-" + category)) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+
+      allButtons.forEach(btn => btn.classList.remove("active"));
+      document.querySelector(`.tab-button[onclick*="${category}"]`).classList.add("active");
+    }
+
+    // Show default on load
+    showCategory('roblox');
+  </script>
+
 </body>
 </html>
