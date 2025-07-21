@@ -114,11 +114,12 @@
       <h1>PC Apps</h1>
       <div class="app-grid">
         <div class="app-card">
-          <h3>Water reminder app V0.01</h3>
-          <div class="button" onclick="downloadFromURL('https://raw.githubusercontent.com/geo-interactive-DEV/Test/refs/heads/main/WaterreminderappV0.01.py')">Download</div>
-                  <div class="app-card">
-          <h3>Water reminder app V0.01 part 2 (you need to download this for it to work)</h3>
-          <div class="button" onclick="downloadFromURL('https://raw.githubusercontent.com/geo-interactive-DEV/Test/refs/heads/main/discord_presence.py')">Download</div>
+          <h3>Water Reminder App V0.01</h3>
+          <div class="button" onclick="downloadFromURL('https://raw.githubusercontent.com/geo-interactive-DEV/Test/main/WaterreminderappV0.01.py')">Download</div>
+        </div>
+        <div class="app-card">
+          <h3>Water Reminder App V0.01 Part 2<br><small>(Required for app to work)</small></h3>
+          <div class="button" onclick="downloadFromURL('https://raw.githubusercontent.com/geo-interactive-DEV/Test/main/discord_presence.py')">Download</div>
         </div>
       </div>
     </div>
@@ -142,7 +143,6 @@
       document.getElementById(tabId).style.display = 'block';
     }
 
-    // Force download by fetching the file and triggering save dialog
     function downloadFromURL(url) {
       fetch(url)
         .then(response => {
@@ -153,7 +153,6 @@
           const a = document.createElement('a');
           const urlBlob = URL.createObjectURL(blob);
           a.href = urlBlob;
-          // Use filename from URL path
           a.download = url.split('/').pop();
           document.body.appendChild(a);
           a.click();
@@ -163,7 +162,6 @@
         .catch(() => alert('Failed to download file.'));
     }
 
-    // Show Roblox tab by default
     showTab('roblox');
   </script>
 
